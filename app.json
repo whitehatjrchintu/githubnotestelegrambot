@@ -1,0 +1,34 @@
+{
+  "name": "Pyroku",
+  "description": "A Pyrogram bot, which can easily be deployed to Heroku.",
+  "repository": "https://github.com/fgallaire/Pyroku",
+  "logo": "https://avatars1.githubusercontent.com/u/34474300?s=280&v=4",
+  "keywords": ["python", "pyrogram", "telegram", "userbot", "pyroku"],
+  "image": "heroku/python",
+  "formation": {
+    "worker": {
+      "quantity": 1,
+      "size": "free"
+    }
+  },
+  "env": {
+    "API_ID": {
+      "description": "App api_id from https://my.telegram.org"
+    },
+    "API_HASH": {
+      "description": "App api_hash from https://my.telegram.org"
+    },
+    "BOT_TOKEN": {
+      "description": "Bot token from https://t.me/BotFather"
+    },
+    "GITHUB_ACCESS_TOKEN": {
+      "description": "Get your github access token from https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token"
+    },
+	"GITHUB_REPOSITORY_LINK": {
+      "description": "Create your github repository,make it private and paste here. Like:- whitehatjrchintu/mega-to-gdrive-bot"
+    },
+    "FILE_NAME_FROM_SAME_REPOSITORY": {
+      "description": "Create a file in the same created repository and paste that file's name here. Like:- notes.txt"
+    }
+  }
+}
