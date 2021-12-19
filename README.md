@@ -20,15 +20,18 @@ screenshot 1 | screenshot 2
   3. Create account on [Telegram](https://web.telegram.org) (if you haven't).
   4. Go to [my.telegram.org/auth](https://my.telegram.org/auth), login and create app. Check [how to create app on telegram](https://core.telegram.org/api/obtaining_api_id). Now save api_id and api_hash which you got from [my.telegram.org/auth](https://my.telegram.org/auth).
   5. Create a telegram bot by using [Bot Father](https://t.me/botfather). Check [how to create bot in telegram](https://core.telegram.org/bots#3-how-do-i-create-a-bot). [Bot Father](https://t.me/botfather) will give you bot token save that token.
-  6. Create repository on GitHub and create/upload an empty file in the same repository.
+  6. Create repository on GitHub and create 4 empty files in the same repository named as instagram.txt, notes.txt, other.txt, youtube.txt.
   7. Create GitHub access token. Check [how to create GitHub access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token). Now save GitHub access token.
-  8. So now you have saved **six** things:-
+  8. So now you have saved **nine** things:-
 		- api_id
 		- api_hash
 		- bot_token
 		- github_access_token
 		- github_repository_link
-		- file_name_from_same_repository
+		- instagram_file_from_same_repository
+		- other_file_from_same_repository
+		- youtube_file_from_same_repository
+		- notes_file_from_same_repository
 </details>
 
 ## How to use?
@@ -52,7 +55,7 @@ screenshot 1 | screenshot 2
 
    `https://www.heroku.com/deploy/?template=https://github.com/whitehatjrchintu/githubnotestelegrambot`
 #### Step 5:
-- Now enter App name in **app_name** and **api_id**, **api_hash**, **bot_token**, **github_access_token**, **github_repository_link** and your **file_name_from_same_repository** which you saved in above steps, in **respective** asked field. Then click **Deploy app**.
+- Now enter App name in **app_name** and **api_id**, **api_hash**, **bot_token**, **github_access_token**, **github_repository_link**, **instagram_file_from_same_repository**, **other_file_from_same_repository**, **youtube_file_from_same_repository** and **notes_file_from_same_repository** which you saved/did in above steps, in **respective** asked field. Then click **Deploy app**.
 #### Step 6:
 - Finally go to your bot, click start button and save your notes.
 </details>
@@ -67,8 +70,11 @@ screenshot 1 | screenshot 2
 |commands|mean|
 |---|---|
 |#ls|list files that are in your github current repository.|
-|#read notes.txt|read a particular file which is available in your current repository.|
-|simple message|send a simple text/message and it will copy that text/message content into notes.txt|
+|#read|read a particular file which is available in your current repository. like:- #read notes.txt|
+|#get|download files that are in your github current repository. like:- #get notes.txt|
+|youtube urls|send youtube urls and it will save those urls in your github current repository's youtube.txt.|
+|instagram urls|send instagram urls and it will save those urls in your github current repository's instagram.txt.|
+|#other text|send a simple text/message and it will save that text/message content into other.txt. like:- #other sample_text|
 |a txt file|send a txt file and it will copy that txt file's content into notes.txt|
 	
 </details>
