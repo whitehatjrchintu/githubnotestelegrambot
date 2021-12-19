@@ -20,7 +20,7 @@ screenshot 1 | screenshot 2
   3. Create account on [Telegram](https://web.telegram.org) (if you haven't).
   4. Go to [my.telegram.org/auth](https://my.telegram.org/auth), login and create app. Check [how to create app on telegram](https://core.telegram.org/api/obtaining_api_id). Now save api_id and api_hash which you got from [my.telegram.org/auth](https://my.telegram.org/auth).
   5. Create a telegram bot by using [Bot Father](https://t.me/botfather). Check [how to create bot in telegram](https://core.telegram.org/bots#3-how-do-i-create-a-bot). [Bot Father](https://t.me/botfather) will give you bot token save that token.
-  6. Create repository on GitHub and create 4 empty files in the same repository named as instagram.txt, notes.txt, other.txt, youtube.txt.
+  6. Create repository on GitHub and create 4 empty files in the same repository named as instagram.txt, youtube.txt, notes.txt and other.txt.
   7. Create GitHub access token. Check [how to create GitHub access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token). Now save GitHub access token.
   8. So now you have saved **nine** things:-
 		- api_id
@@ -29,9 +29,9 @@ screenshot 1 | screenshot 2
 		- github_access_token
 		- github_repository_link
 		- instagram_file_from_same_repository
-		- other_file_from_same_repository
 		- youtube_file_from_same_repository
 		- notes_file_from_same_repository
+		- other_file_from_same_repository
 </details>
 
 ## How to use?
@@ -55,7 +55,7 @@ screenshot 1 | screenshot 2
 
    `https://www.heroku.com/deploy/?template=https://github.com/whitehatjrchintu/githubnotestelegrambot`
 #### Step 5:
-- Now enter App name in **app_name** and **api_id**, **api_hash**, **bot_token**, **github_access_token**, **github_repository_link**, **instagram_file_from_same_repository**, **other_file_from_same_repository**, **youtube_file_from_same_repository** and **notes_file_from_same_repository** which you saved/did in above steps, in **respective** asked field. Then click **Deploy app**.
+- Now enter App name in **app_name** and **api_id**, **api_hash**, **bot_token**, **github_access_token**, **github_repository_link**, **instagram_file_from_same_repository**, **youtube_file_from_same_repository**, **notes_file_from_same_repository** and **other_file_from_same_repository** which you saved/did in above steps, in **respective** asked field. Then click **Deploy app**.
 #### Step 6:
 - Finally go to your bot, click start button and save your notes.
 </details>
