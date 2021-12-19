@@ -6,8 +6,7 @@ With this telegram bot you can **create notes on [GitHub](https://www.github.com
 
 screenshot 1 | screenshot 2
 --- | ---
-![photo_2021-10-20_15-46-43](https://user-images.githubusercontent.com/74552895/146566657-bd745d26-fc96-46a5-807d-ab955dedd89c.PNG) | ![photo_2021-10-20_15-46-51](https://user-images.githubusercontent.com/74552895/146566675-f9fa4f59-4ecd-4be3-8aac-bc9d00c2cfc4.PNG)
-
+![photo_2021-10-20_15-46-43](https://user-images.githubusercontent.com/74552895/146686403-5cc7a948-c90f-4ac2-a497-2a755f1b96c6.PNG) | ![photo_2021-10-20_15-46-51](https://user-images.githubusercontent.com/74552895/146686413-8fabad3f-2020-4086-8a56-35171a0ba9bb.PNG)
 
 ## Prerequisites:-
 <details>
