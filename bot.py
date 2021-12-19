@@ -87,18 +87,17 @@ def get(client: Client, message: Message):
         aaa = contents.decoded_content.decode()
 
         #copying old with new
-        f = open("file.txt","w")
+        f = open(msg_texted,"w")
         f.write(aaa)
         f.close()
-        orig = "file.txt"
-        document = (open(orig,'rb'))
+        document = (open(msg_texted,'rb'))
 
         #sending message
         app.send_document(chat_id=message.from_user.id,reply_to_message_id=message.message_id,document=document)
         msg = app.send_message(message.from_user.id,"Done.",reply_to_message_id=message.message_id)
 
         #removing files
-        os.remove("file.txt")
+        os.remove(msg_texted)
 
         #delete message
         working_msg.delete()
