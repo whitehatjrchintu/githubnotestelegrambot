@@ -27,8 +27,17 @@
 	"GITHUB_REPOSITORY_LINK": {
       "description": "Create your github repository,make it private and paste here. Like:- whitehatjrchintu/mega-to-gdrive-bot"
     },
-    "FILE_NAME_FROM_SAME_REPOSITORY": {
+    "INSTGRAM_FILE_FROM_SAME_REPOSITORY": {
+      "description": "Create a file in the same created repository and paste that file's name here. Like:- instagram.txt"
+    },
+	"NOTES_FILE_FROM_SAME_REPOSITORY": {
       "description": "Create a file in the same created repository and paste that file's name here. Like:- notes.txt"
+    },
+	"OTHER_FILE_FROM_SAME_REPOSITORY": {
+      "description": "Create a file in the same created repository and paste that file's name here. Like:- other.txt"
+    },
+	"YOUTUBE_FILE_FROM_SAME_REPOSITORY": {
+      "description": "Create a file in the same created repository and paste that file's name here. Like:- youtube.txt"
     }
   }
 }

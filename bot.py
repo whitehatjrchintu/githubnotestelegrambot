@@ -9,7 +9,10 @@ api_hash = environ["API_HASH"]
 bot_token = environ["BOT_TOKEN"]
 github_access_token = environ["GITHUB_ACCESS_TOKEN"]
 github_repository_link = environ["GITHUB_REPOSITORY_LINK"]
-file_name_from_same_repository = environ["FILE_NAME_FROM_SAME_REPOSITORY"]
+instagram_file_from_same_repository = environ["INSTGRAM_FILE_FROM_SAME_REPOSITORY"]
+other_file_from_same_repository = environ["OTHER_FILE_FROM_SAME_REPOSITORY"]
+youtube_file_from_same_repository = environ["YOUTUBE_FILE_FROM_SAME_REPOSITORY"]
+notes_file_from_same_repository = environ["NOTES_FILE_FROM_SAME_REPOSITORY"]
 app = Client(":memory:", api_id, api_hash, bot_token=bot_token)
 
 @app.on_message(filters.command(["start"]))
@@ -17,7 +20,7 @@ def start(client: Client, message: Message):
         msg = app.send_message(message.from_user.id,"Welcome",reply_to_message_id=message.message_id)
 
 @app.on_message(filters.regex(r'#read'))
-def get_all_files(client: Client, message: Message):
+def read_files(client: Client, message: Message):
         working_msg = app.send_message(message.from_user.id,"Working on it.",reply_to_message_id=message.message_id)
         
         #login
@@ -40,7 +43,7 @@ def get_all_files(client: Client, message: Message):
         working_msg.delete()
 
 @app.on_message(filters.regex(r'#ls'))
-def get_all_files(client: Client, message: Message):
+def list_files(client: Client, message: Message):
         working_msg = app.send_message(message.from_user.id,"Working on it.",reply_to_message_id=message.message_id)
         
         #login
@@ -59,7 +62,7 @@ def get_all_files(client: Client, message: Message):
                     file = file_content
                     all_files.append(str(file).replace('ContentFile(path="','').replace('")',''))
 
-        all_filess = str(all_files).lstrip("['").rstrip("']")
+        all_filess = str(all_files).lstrip("['").rstrip("']").replace("'","")
         
         #sending message
         msg = app.send_message(chat_id=message.from_user.id, reply_to_message_id=message.message_id, text="These files are in your current repository:" + "\n\n"+ "<b>" + all_filess + "</b>",parse_mode="html")
@@ -67,8 +70,88 @@ def get_all_files(client: Client, message: Message):
         #delete message
         working_msg.delete()
 
-@app.on_message(filters.text)
-def notes(client: Client, message: Message):
+@app.on_message(filters.regex(r'#get'))
+def get(client: Client, message: Message):
+        working_msg = app.send_message(message.from_user.id,"Working on it.",reply_to_message_id=message.message_id)
+        
+        #login
+        g = Github(github_access_token)
+        
+        #getting text
+        msg_textedd = (message.text)
+        msg_texted = msg_textedd.lstrip("#get ")
+        
+        #getting repo and file
+        repo = g.get_repo(github_repository_link)
+        contents = repo.get_contents(msg_texted, ref="main")
+        aaa = contents.decoded_content.decode()
+
+        #copying old with new
+        f = open("file.txt","w")
+        f.write(aaa)
+        f.close()
+        orig = "file.txt"
+        document = (open(orig,'rb'))
+
+        #sending message
+        app.send_document(chat_id=message.from_user.id,reply_to_message_id=message.message_id,document=document)
+        msg = app.send_message(message.from_user.id,"Done.",reply_to_message_id=message.message_id)
+
+        #removing files
+        os.remove("file.txt")
+
+        #delete message
+        working_msg.delete()
+
+@app.on_message(filters.regex(r'#other'))
+def other(client: Client, message: Message):
+        working_msg = app.send_message(message.from_user.id,"Working on it.",reply_to_message_id=message.message_id)
+        
+        #login
+        g = Github(github_access_token)
+        
+        #getting text
+        msg_textedd = (message.text)
+        msg_texted = msg_textedd.lstrip("#other ")
+        
+        #getting repo and file
+        repo = g.get_repo(github_repository_link)
+        contents = repo.get_contents(other_file_from_same_repository, ref="main")
+        aaa = contents.decoded_content.decode()
+
+        #copying old with new
+        aa = msg_texted + "\n" + aaa
+        f = open("file.txt","w")
+        f.write(aa)
+        f.close()
+
+        #removing duplicate
+        lines_seen = set()
+        outfile = open("filee.txt", "w")
+        for line in open("file.txt", "r"):
+            if line not in lines_seen:
+                outfile.write(line)
+                lines_seen.add(line)
+        outfile.close()
+
+        ff = open("filee.txt","r")
+        content = ff.read()
+
+        #updating file
+        repo.update_file(contents.path, "updated", content, contents.sha, branch="main")
+
+        #removing files
+        os.remove("file.txt")
+        os.remove("filee.txt")
+
+        #sending message
+        msg = app.send_message(message.from_user.id,"Done.",reply_to_message_id=message.message_id)
+
+        #delete message
+        working_msg.delete()
+
+@app.on_message(filters.regex(r'youtube.com|youtu.be'))
+def youtube(client: Client, message: Message):
         working_msg = app.send_message(message.from_user.id,"Working on it.",reply_to_message_id=message.message_id)
         
         #login
@@ -79,7 +162,53 @@ def notes(client: Client, message: Message):
         
         #getting repo and file
         repo = g.get_repo(github_repository_link)
-        contents = repo.get_contents(file_name_from_same_repository, ref="main")
+        contents = repo.get_contents(youtube_file_from_same_repository, ref="main")
+        aaa = contents.decoded_content.decode()
+
+        #copying old with new
+        aa = msg_texted + "\n" + aaa
+        f = open("file.txt","w")
+        f.write(aa)
+        f.close()
+
+        #removing duplicate
+        lines_seen = set()
+        outfile = open("filee.txt", "w")
+        for line in open("file.txt", "r"):
+            if line not in lines_seen:
+                outfile.write(line)
+                lines_seen.add(line)
+        outfile.close()
+
+        ff = open("filee.txt","r")
+        content = ff.read()
+
+        #updating file
+        repo.update_file(contents.path, "updated", content, contents.sha, branch="main")
+
+        #removing files
+        os.remove("file.txt")
+        os.remove("filee.txt")
+
+        #sending message
+        msg = app.send_message(message.from_user.id,"Done.",reply_to_message_id=message.message_id)
+
+        #delete message
+        working_msg.delete()
+
+@app.on_message(filters.regex(r'instagram.com'))
+def instagram(client: Client, message: Message):
+        working_msg = app.send_message(message.from_user.id,"Working on it.",reply_to_message_id=message.message_id)
+        
+        #login
+        g = Github(github_access_token)
+        
+        #getting text
+        msg_texted = (message.text)
+        
+        #getting repo and file
+        repo = g.get_repo(github_repository_link)
+        contents = repo.get_contents(instagram_file_from_same_repository, ref="main")
         aaa = contents.decoded_content.decode()
 
         #copying old with new
@@ -135,7 +264,7 @@ def notes_file(client: Client, message: Message):
         
         #getting repo and file
         repo = g.get_repo(github_repository_link)
-        contents = repo.get_contents(file_name_from_same_repository, ref="main")
+        contents = repo.get_contents(notes_file_from_same_repository, ref="main")
         aaa = contents.decoded_content.decode()
 
         #copying old with new
