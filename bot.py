@@ -149,7 +149,7 @@ def other(client: Client, message: Message):
         #delete message
         working_msg.delete()
 
-@app.on_message(filters.regex(r'youtube.com|youtu.be'))
+@app.on_message(filters.regex(r'#youtube|youtube.com|youtu.be'))
 def youtube(client: Client, message: Message):
         working_msg = app.send_message(message.from_user.id,"Working on it.",reply_to_message_id=message.message_id)
         
@@ -157,7 +157,12 @@ def youtube(client: Client, message: Message):
         g = Github(github_access_token)
         
         #getting text
-        msg_texted = (message.text)
+        msg_textedd = (message.text)
+        if '#youtube' in msg_textedd:
+                msg_texted = msg_textedd.lstrip("#youtube ")
+
+        else:
+                msg_texted = (message.text)
         
         #getting repo and file
         repo = g.get_repo(github_repository_link)
@@ -195,15 +200,20 @@ def youtube(client: Client, message: Message):
         #delete message
         working_msg.delete()
 
-@app.on_message(filters.regex(r'instagram.com'))
+@app.on_message(filters.regex(r'#insta|instagram.com'))
 def instagram(client: Client, message: Message):
         working_msg = app.send_message(message.from_user.id,"Working on it.",reply_to_message_id=message.message_id)
         
         #login
         g = Github(github_access_token)
-        
+
         #getting text
-        msg_texted = (message.text)
+        msg_textedd = (message.text)
+        if '#insta' in msg_textedd:
+                msg_texted = msg_textedd.lstrip("#insta ")
+
+        else:
+                msg_texted = (message.text)
         
         #getting repo and file
         repo = g.get_repo(github_repository_link)

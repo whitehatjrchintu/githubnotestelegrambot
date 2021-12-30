@@ -71,8 +71,8 @@ screenshot 1 | screenshot 2
 |#ls|list files that are in your github current repository.|
 |#read|read a particular file which is available in your current repository. like:- #read notes.txt|
 |#get|download files that are in your github current repository. like:- #get notes.txt|
-|youtube urls|send youtube urls and it will save those urls in your current repository's youtube.txt.|
-|instagram urls|send instagram urls and it will save those urls in your current repository's instagram.txt.|
+|#youtube or youtube urls|send text with #youtube command or youtube urls and it will save that/those text/urls in your current repository's youtube.txt.|
+|#insta or instagram urls|send text with #insta command or instagram urls and it will save that/those text/urls in your current repository's instagram.txt.|
 |#other text|send a simple text and it will save that text into other.txt. like:- #other sample_text|
 |send a txt file|send a txt file and it will copy that txt file's content into notes.txt|
 	
